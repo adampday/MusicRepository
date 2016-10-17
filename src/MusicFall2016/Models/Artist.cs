@@ -1,4 +1,6 @@
-﻿namespace MusicFall2016.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace MusicFall2016.Models
 {
     public class Artist
     {
@@ -7,5 +9,7 @@
         public string Name { get; set; }
 
         public string Bio { get; set; }
+
+        
     }
 }

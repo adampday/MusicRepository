@@ -9,18 +9,18 @@ using MusicFall2016.Models;
 
 namespace MusicFall2016.Controllers
 {
-    public class AlbumsController : Controller
+    public class ArtistController : Controller
     {
         private readonly MusicDbContext _context;
 
-        public AlbumsController(MusicDbContext context)
+        public ArtistController(MusicDbContext context)
         {
             _context = context;
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var albums = _context.Albums.ToList();
+            var artist = _context.Artists.ToList();
             return View();
         }
 
@@ -43,6 +43,5 @@ namespace MusicFall2016.Controllers
         {
             return View();
         }
-
     }
 }

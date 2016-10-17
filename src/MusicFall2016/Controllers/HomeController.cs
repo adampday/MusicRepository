@@ -21,6 +21,7 @@ namespace MusicFall2016.Controllers
         }
 
         public IActionResult Contact()
+
         {
             ViewData["Message"] = "Your contact page.";
 
