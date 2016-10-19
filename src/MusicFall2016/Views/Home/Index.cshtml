@@ -1,4 +1,14 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@Model MusicFall2016.Models.Album
+@{
+    ViewData["Title"] = "Details";
 }
 
+<tr>
+    <td>@Model.Title</td>
+    <td>@Model.Artist.Name</td>
+    <td>@Model.Genre.Name </td>
+    <td>@Model.Price </td>
+
+</tr>
+<a asp-action="Details" asp-route-id="@Model.AlbumID"></a>
+Hello world.

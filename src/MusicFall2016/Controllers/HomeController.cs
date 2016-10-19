@@ -10,7 +10,7 @@ namespace MusicFall2016.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(albums);
         }
 
         public IActionResult About()

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MusicFall2016.Models;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -44,5 +45,22 @@ namespace MusicFall2016.Controllers
             return View();
         }
 
+        public IActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var album = _context.Albums
+                .Include(a => a.Artist)
+                .Include(a => a.Artist)
+                .SingleOrDefault(a => a.AlbumID == id);
+
+            if (album == null)
+            {
+                return NotFound();
+            }
+            return View(album);
+        }
     }
 }
