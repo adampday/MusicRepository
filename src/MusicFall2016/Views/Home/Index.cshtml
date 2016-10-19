@@ -1,14 +1,9 @@
-﻿@Model MusicFall2016.Models.Album
+﻿@model MusicFall2016.Models.Album
 @{
     ViewData["Title"] = "Details";
 }
 
-<tr>
-    <td>@Model.Title</td>
-    <td>@Model.Artist.Name</td>
-    <td>@Model.Genre.Name </td>
-    <td>@Model.Price </td>
-
-</tr>
-<a asp-action="Details" asp-route-id="@Model.AlbumID"></a>
-Hello world.
+<div class="container" id="home-div">
+    <h2>Welcome to the music database!</h2>
+    <h2>Select the above tabs to go to the albums, artists, and genres.</h2>
+</div>
