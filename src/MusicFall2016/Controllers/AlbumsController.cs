@@ -29,25 +29,96 @@ namespace MusicFall2016.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.ArtistList = new SelectList(_context.Artists, "ArtistID", "Name");
+            ViewBag.GenreList = new SelectList(_context.Genres, "GenreID", "Name");
             return View();
         }
-
-        public IActionResult Retrieve()
+        [HttpPost]
+        public IActionResult Create(Album album)
         {
+            if (ModelState.IsValid)
+            {
+                _context.Albums.Add(album);
+                _context.SaveChanges();
+                return RedirectToAction("Details");
+            }
+            ViewBag.ArtistList = new SelectList(_context.Artists, "ArtistID", "Name");
+            ViewBag.GenreList = new SelectList(_context.Genres, "GenreID", "Name");
             return View();
         }
 
-        public IActionResult Update()
+        public IActionResult Retrieve(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var album = _context.Albums
+                .Include(a => a.Artist)
+                .Include(a => a.Artist)
+                .SingleOrDefault(a => a.AlbumID == id);
+
+            if (album == null)
+            {
+                return NotFound();
+            }
+            return View(album);
         }
 
-        public IActionResult Delete()
+        public IActionResult Update(int? id)
         {
-            return View();
-        }
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                ViewBag.ArtistList = new SelectList(_context.Artists, "ArtistID", "Name");
+                ViewBag.GenreList = new SelectList(_context.Genres, "GenreID", "Name");
+                var album = _context.Albums
+                    .Include(a => a.Artist)
+                    .Include(a => a.Artist)
+                    .SingleOrDefault(a => a.AlbumID == id);
 
-        
+                if (album == null)
+                {
+                    return NotFound();
+                }
+                return View(album);
+            }
+        }
+        [HttpPost]
+        public IActionResult Update(Album album)
+        {
+            _context.Albums.Update(album);
+            _context.SaveChanges();
+            return RedirectToAction("Details");
+        }
+        public IActionResult Delete(int? id)
+        {
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                var album = _context.Albums
+                    .Include(a => a.Artist)
+                    .Include(a => a.Artist)
+                    .SingleOrDefault(a => a.AlbumID == id);
+
+                if (album == null)
+                {
+                    return NotFound();
+                }
+                return View(album);
+            }
+        }
+        [HttpPost]
+        public IActionResult Delete(Album album)
+        {
+            _context.Albums.Remove(album);
+            _context.SaveChanges();
+            return RedirectToAction("Details");
+        }        
 /*
         public IActionResult Details(int? id)
         {
