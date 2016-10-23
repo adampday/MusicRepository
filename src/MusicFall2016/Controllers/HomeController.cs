@@ -8,19 +8,20 @@ namespace MusicFall2016.Controllers
 {
     public class HomeController : Controller
     {
+        
         public IActionResult Index()
         {
-            return View(albums);
+            return View();
         }
 
-        public IActionResult About()
+        public IActionResult Album()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Artist()
 
         {
             ViewData["Message"] = "Your contact page.";
@@ -28,7 +29,7 @@ namespace MusicFall2016.Controllers
             return View();
         }
 
-        public IActionResult Error()
+        public IActionResult Genre()
         {
             return View();
         }

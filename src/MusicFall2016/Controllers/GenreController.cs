@@ -18,7 +18,7 @@ namespace MusicFall2016.Controllers
             _context = context;
         }
         // GET: /<controller>/
-        public IActionResult Index()
+        public IActionResult Details()
         {
             var genres = _context.Genres.ToList();
             return View();
@@ -39,9 +39,6 @@ namespace MusicFall2016.Controllers
             return View();
         }
 
-        public IActionResult Delete()
-        {
-            return View();
-        }
+
     }
 }

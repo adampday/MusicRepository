@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,9 +11,10 @@ namespace MusicFall2016.Models
     {
         
         public int AlbumID { get; set; }
+        [Required(ErrorMessage = "Please enter in a title.")]
         public string Title { get; set; }
-        //[Required(ErrorMessage = "Please type in a price!")]
-        //[Range(typeof(Decimal), ".01", "100.0")(ErrorMessage = "Invalid input!"]
+        [Required(ErrorMessage = "Please type in a price!")]
+        [Range(0.01, 100.0, ErrorMessage = "Invalid input!")]
         public decimal Price { get; set; }
 
         // Foreign key
